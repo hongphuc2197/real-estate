@@ -1,0 +1,89 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Trang tính khoản vay </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="mortgage-calc-container">
+    <ion-grid class="ion-margin-top">
+      <ion-row>
+        <ion-col size="12" class="ion-padding">
+          <h1>
+            Mua <strong> bất động sản </strong> là một trong những giao dịch mua
+            với giá trị tài sản lớn nhất mà hầu hết mọi người sẽ thực hiện, vì
+            vậy bạn nên suy nghĩ cẩn thận về cách bạn sẽ chi trả cho nó. Bạn có
+            thể điều chỉnh giá bất động sản, khoản trả trước và thời hạn thế
+            chấp để xem khoản thanh toán hàng tháng của bạn sẽ thay đổi như thế
+            nào.
+          </h1>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" sizeXl="7">
+          <app-mortgage-core-calc
+            #calc
+            [boxShadow]="false"
+            (formValue)="pieChart.setChart($event)"
+            (amortizationSchedule)="lineChart.setChart($event)"
+            (scheduleChanged)="lineChart.scheduleIsChanged()"
+          ></app-mortgage-core-calc>
+        </ion-col>
+        <ion-col size="12" sizeXl="5">
+          <app-mortgage-pie-chart #pieChart></app-mortgage-pie-chart>
+        </ion-col>
+        <ion-col size="12" class="ion-padding">
+          <div class="note-container">
+            <div class="icon-container">
+              <ion-icon name="alert-circle-outline"></ion-icon>
+            </div>
+            Khoản thanh toán thế chấp hàng tháng của bạn sẽ phụ thuộc vào Giá
+            bất động sản, khoản trả trước, thời hạn cho vay, thuế tài sản, bảo
+            hiểm và lãi suất.
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <app-mortgage-line-chart
+            #lineChart
+            (generateSchedule)="calc.getAmortizationSchedule()"
+          ></app-mortgage-line-chart>
+        </ion-col>
+        <ion-col size="12" class="ion-padding">
+          <h4 class="ion-padding-top">Biểu đồ khấu hao là gì?</h4>
+          <p>
+            <ion-text color="dark">
+              cho biết số tiền gốc và số tiền lãi bao gồm mỗi khoản thanh toán
+              cho đến khi khoản vay được trả hết vào cuối kỳ hạn.
+            </ion-text>
+          </p>
+          <p>
+            <ion-text color="dark">
+              Ban đầu, phần lớn khoản thanh toán của bạn sẽ chuyển sang lãi suất
+              thay vì tiền gốc. Lịch trình khấu hao khoản vay sẽ hiển thị khi
+              thời hạn khoản vay của bạn tiến triển, phần thanh toán lớn hơn của
+              bạn sẽ được dùng để trả hết tiền gốc cho đến khi khoản vay được
+              thanh toán đầy đủ vào cuối thời hạn của bạn.
+            </ion-text>
+          </p>
+          <h4 class="ion-margin-top">Hiểu về sơ đồ khấu hao</h4>
+          <p>
+            <ion-text color="dark">
+              Trong sơ đồ khấu hao, tỷ lệ phần trăm của mỗi khoản thanh toán đối
+              với tiền lãi sẽ giảm đi một chút sau mỗi lần thanh toán và tỷ lệ
+              phần trăm đối với tiền gốc sẽ tăng lên.
+            </ion-text>
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div class="extra-spacer"></div>
+
+  <app-footer></app-footer>
+</ion-content>
