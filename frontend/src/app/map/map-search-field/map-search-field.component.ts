@@ -24,8 +24,8 @@ export class MapSearchFieldComponent implements OnInit {
     const modal = await this.modalCtrl.create({
       component: ModalSearchComponent,
       componentProps: {
-        title: 'Search Location',
-        placeholder: 'Search Cities...',
+        title: 'Tìm địa điểm',
+        placeholder: 'Tìm thành phố...',
         items: [...cities],
         displayProperty: 'city',
         searchFunction: this.searchFunction

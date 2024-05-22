@@ -93,7 +93,7 @@
             <ion-item>
               <ion-icon class="ion-margin-end" name="cash-outline"></ion-icon>
               <ion-input
-                debounce="1000"
+                debounce="1000000000"
                 type="number"
                 min="0"
                 value="mortgageForm.get('propertyTax').value"
@@ -112,7 +112,7 @@
               <ion-input
                 type="number"
                 min="0"
-                debounce="1000"
+                debounce="1000000000"
                 value="mortgageForm.get('insurance').value"
                 formControlName="insurance"
                 labelPlacement="stacked"

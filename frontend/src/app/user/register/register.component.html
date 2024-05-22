@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Register Page</ion-title>
+    <ion-title>Trang đăng ký</ion-title>
     <ion-buttons slot="end">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -23,7 +23,7 @@
               <ion-input
                 type="text"
                 labelPlacement="floating"
-                label="Full Name"
+                label="Tên đầy đủ"
                 formControlName="fullName"
               ></ion-input>
             </ion-item>
@@ -33,7 +33,7 @@
               *ngIf="registerForm.get('fullName').errors"
             >
               <app-alert-card
-                content="Full Name is too short."
+                content="Tên đầy đủ quá ngắn."
               ></app-alert-card>
             </div>
 
@@ -50,7 +50,7 @@
               class="alert-errors"
               *ngIf="registerForm.get('email').errors"
             >
-              <app-alert-card content="Email is not valid. ex: name@email.com"></app-alert-card>
+              <app-alert-card content="Email không hợp lê. vd: name@email.com"></app-alert-card>
             </div>
 
             <ion-item>
@@ -67,8 +67,7 @@
               *ngIf="registerForm.get('password').errors"
             >
               <app-alert-card
-                content="Length needs to be 8+ long & contain a
-                (number, special characters, small case & capitalize)."
+                content="Độ dài tối thiểu là 8 ký tự và phải chứa (số, ký tự đặc biệt, chữ thường và chữ in hoa)."
               ></app-alert-card>
             </div>
 
@@ -76,7 +75,7 @@
               <ion-input
                 type="password"
                 labelPlacement="floating"
-                label="Confirm Password"
+                label="Nhập lại password"
                 formControlName="confirm"
               ></ion-input>
             </ion-item>
@@ -86,13 +85,13 @@
               *ngIf="registerForm.errors?.notConfirmed"
             >
               <app-alert-card
-                content="Password not confirmed."
+                content="Password không khớp."
               ></app-alert-card>
             </div>
 
             <div class="ion-padding-vertical">
-              By continuing, you agree to our <a>User Agreement</a> and
-              <a>Privacy Policy</a>.
+              Bằng cách tiếp tục, bạn đã đồng ý với <a>Thỏa thuận người dùng</a> và
+              <a>Chính sách quyền riêng tư của chúng tôi</a>.
             </div>
 
             <ion-button
@@ -102,12 +101,12 @@
               color="primary"
               type="submit"
             >
-              Sign Up
+              Đăng ký
             </ion-button>
 
             <div class="ask-signin">
-              Already have an Account?
-              <a [routerLink]="['/user/signin']">Sign in</a>
+              Đã có tài khoản?
+              <a [routerLink]="['/user/signin']">Đăng nhập</a>
             </div>
           </ion-list>
         </form>

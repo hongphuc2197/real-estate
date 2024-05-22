@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Sign In Page</ion-title>
+    <ion-title>Trang đăng nhập</ion-title>
     <ion-buttons slot="end">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -54,11 +54,11 @@
               color="primary"
               type="submit"
             >
-              Sign In
+             Đăng nhập
             </ion-button>
 
             <div class="ion-margin-vertical ion-text-center" *ngIf="showSocial">
-              OR
+              hoặc
             </div>
 
             <div class="social-container" *ngIf="showSocial">
@@ -86,7 +86,7 @@
             </div>
 
             <div class="ask-register">
-              First time here? <a [routerLink]="['/user/register']">Register</a>
+              Lần đầu bạn đến đây? <a [routerLink]="['/user/register']">Đăng ký</a>
             </div>
           </ion-list>
         </form>

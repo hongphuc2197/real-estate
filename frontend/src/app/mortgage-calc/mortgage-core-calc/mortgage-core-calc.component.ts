@@ -55,10 +55,10 @@ export class MortgageCoreCalcComponent implements AfterViewInit {
           '1,000,000,000',
           [Validators.required, Validators.min(1)],
         ],
-        interest: [5, [Validators.max(20), Validators.required]],
-        term: [30, [Validators.max(30), Validators.required]],
-        propertyTax: [this.simpleMode ? '0' : '150'],
-        insurance: [this.simpleMode ? '0' : '300'],
+        interest: [8, [Validators.max(20), Validators.required]],
+        term: [20, [Validators.max(30), Validators.required]],
+        propertyTax: [this.simpleMode ? '0' : '10000000'],
+        insurance: [this.simpleMode ? '0' : '30000000'],
       },
       {
         validators: this.customValidator.isGreaterValidator(

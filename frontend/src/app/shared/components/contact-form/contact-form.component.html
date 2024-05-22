@@ -1,6 +1,6 @@
 <ion-card>
   <ion-card-header>
-    <ion-card-title class="ion-text-capitalize"> Contact Form </ion-card-title>
+    <ion-card-title class="ion-text-capitalize"> Thông tin liên hệ </ion-card-title>
   </ion-card-header>
 
   <ion-card-content>
@@ -19,13 +19,13 @@
           class="alert-errors"
           *ngIf="error && contactForm.get('email').errors"
         >
-          <app-alert-card> Email is invalid. </app-alert-card>
+          <app-alert-card> Email không hợp lệ. </app-alert-card>
         </div>
 
         <ion-item>
           <ion-input
             labelPlacement="floating"
-            label="Name:"
+            label="Tên:"
             type="text"
             formControlName="name"
           ></ion-input>
@@ -35,15 +35,15 @@
           class="alert-errors"
           *ngIf="error && contactForm.get('name').errors"
         >
-          <app-alert-card> Name must be filled correctly. </app-alert-card>
+          <app-alert-card> Tên phải được điền chính xác. </app-alert-card>
         </div>
 
         <ion-item>
           <ion-textarea
             formControlName="message"
             labelPlacement="floating"
-            label="Message:"
-            placeholder="Must be atleast 10 charters long"
+            label="Lời nhắn:"
+            placeholder="Tối thiểu phải chứa 10 chữ cái"
           ></ion-textarea>
         </ion-item>
 
@@ -52,13 +52,13 @@
           *ngIf="error && contactForm.get('message').errors"
         >
           <app-alert-card>
-            Make sure the message are filled correctly.
+           Hãy đảm bảo rằng tin nhắn đã được điền chính xác.
           </app-alert-card>
         </div>
       </ion-list>
 
       <ion-button expand="block" size="large" type="submit" [disabled]="sent">
-        {{ sent ? "Message Sent" : "Send message" }}
+        {{ sent ? "Tin nhắn đã được gửi" : "Gửi tin nhắn" }}
       </ion-button>
     </form>
   </ion-card-content>

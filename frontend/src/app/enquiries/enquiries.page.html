@@ -12,7 +12,7 @@
       [(ngModel)]="search"
       animated
       (ionChange)="enquiriesList.setSearch(search)"
-      placeholder="Search Enquiry"
+      placeholder="Tìm kiếm yêu cầu"
     ></ion-searchbar>
     <ion-grid>
       <ion-row>
@@ -21,7 +21,7 @@
             <ion-select
               multiple="true"
               [(ngModel)]="filterBy"
-              label="Filter by:"
+              label="Lọc bởi:"
               (ionChange)="enquiriesList.setFilters(filterBy)"
             >
               <ion-select-option
@@ -39,7 +39,7 @@
             <ion-select
               [(ngModel)]="sortBy"
               okText="Okay"
-              label="Sort by:"
+              label="Sắp xếp bởi:"
               cancelText="Dismiss"
               (ionChange)="enquiriesList.setSort(sortBy)"
             >

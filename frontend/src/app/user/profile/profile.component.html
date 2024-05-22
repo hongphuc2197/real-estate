@@ -5,7 +5,7 @@
         <ion-col size="12" sizeMd="4">
           <ion-card>
             <ion-card-header class="ion-no-padding">
-              <ion-card-title class="ion-padding"> My Profile, </ion-card-title>
+              <ion-card-title class="ion-padding"> Thông tin của tôi, </ion-card-title>
               <div class="profile-img-container">
                 <img [src]="imgUrl" />
               </div>
@@ -24,13 +24,13 @@
                 expand="block"
                 (click)="toggleUpload()"
               >
-                Upload Image
+                Tải lên hình ảnh
               </ion-button>
 
               <div class="app-use-info">
                 <div class="item">
                   <ion-icon name="flame-outline"></ion-icon>
-                  <ion-text>Joined {{ user?.created | date }}</ion-text>
+                  <ion-text>Đã tham gia vào {{ user?.created | date }}</ion-text>
                 </div>
                 <div class="item">
                   <ion-icon name="calendar-outline"></ion-icon>
@@ -44,7 +44,7 @@
         <ion-col size="12" sizeMd="8">
           <ion-card>
             <ion-card-header>
-              <ion-card-title> My Information </ion-card-title>
+              <ion-card-title> Thông tin của tôi </ion-card-title>
             </ion-card-header>
 
             <ion-card-content>
@@ -61,7 +61,7 @@
                 <ion-item lines="none">
                   <ion-input
                     labelPlacement="floating"
-                    label="Full Name *"
+                    label="Tên đầy đủ *"
                     type="text"
                     [value]="user?.fullName"
                   ></ion-input>
@@ -71,7 +71,7 @@
                   <ion-textarea
                     placeholder="..."
                     labelPlacement="floating"
-                    label="About Me:"
+                    label="Giới thiệu bản thân:"
                     [value]="user?.aboutMe"
                   ></ion-textarea>
                 </ion-item>
@@ -86,7 +86,7 @@
                 </ion-item>
 
                 <div class="ion-text-end ion-padding-vertical">
-                  <ion-button>SAVE CHANGES</ion-button>
+                  <ion-button>LƯU THAY ĐỔI</ion-button>
                 </div>
               </form>
             </ion-card-content>
@@ -95,9 +95,9 @@
       </ion-row>
       <ion-row>
         <ion-col class="activities-section">
-          <div class="heading">My Activities</div>
+          <div class="heading">Hoạt động của tôi</div>
           <div class="activities-empty">
-            <h1>EMPTY<ion-icon name="alert-circle-outline"></ion-icon></h1>
+            <h1>Trống<ion-icon name="alert-circle-outline"></ion-icon></h1>
           </div>
         </ion-col>
       </ion-row>
