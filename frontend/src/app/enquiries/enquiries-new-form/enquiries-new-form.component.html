@@ -2,10 +2,10 @@
   <div>
     <ion-input
       type="text"
-      label="Title :"
+      label="Tiêu đề :"
       labelPlacement="floating"
       formControlName="title"
-      errorText="Title is too short."
+      errorText="Tiêu đề quá ngắn."
     ></ion-input>
   </div>
 
@@ -15,7 +15,7 @@
       label="Email :"
       labelPlacement="floating"
       formControlName="email"
-      errorText="Invalid email"
+      errorText="Email không hợp lệ"
     ></ion-input>
   </div>
 
@@ -29,7 +29,7 @@
   </div>
 
   <div class="alert-errors" *ngIf="error && enquiryForm.get('content').errors">
-    Message content is too short.
+    Nội dung tin nhắn quá ngắn.
   </div>
 
   <div class="ion-margin-top">
@@ -39,10 +39,10 @@
       placeholder="Select One"
       label="Topic :"
     >
-      <ion-select-option value="schedule">Schedule Visit</ion-select-option>
-      <ion-select-option value="payment">Payment</ion-select-option>
-      <ion-select-option value="sales">Sales</ion-select-option>
-      <ion-select-option value="information">Information</ion-select-option>
+      <ion-select-option value="schedule">Đặt lịch hẹn</ion-select-option>
+      <ion-select-option value="payment"> Thanh toán </ion-select-option>
+      <ion-select-option value="sales">Mua bán</ion-select-option>
+      <ion-select-option value="information"> Thông tin</ion-select-option>
     </ion-select>
   </div>
 
@@ -54,6 +54,6 @@
     color="success"
     [disabled]="submitting"
   >
-    Submit
+    Gửi
   </ion-button>
 </form>

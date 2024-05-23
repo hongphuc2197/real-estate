@@ -32,7 +32,7 @@ export const enquiries = [
     enquiry_id: "e02",
     content: dummyContent1,
     email: "test@email.com",
-    title: "LAUNDRY Hành tinh xanh Sales [XXX]",
+    title: "LAUNDRY Hành tinh xanh Sales",
     topic: EnquiryTopic.sales,
     read: false,
     property: {
@@ -80,7 +80,7 @@ export const enquiries = [
     enquiry_id: "e04",
     content: dummyContent1,
     email: "test@email.com",
-    title: "Photo Studio Dummy Schedule about [XXX]",
+    title: "Photo Studio Dummy Schedule",
     topic: EnquiryTopic.schedule,
     read: false,
     property: {
@@ -104,7 +104,7 @@ export const enquiries = [
     enquiry_id: "e05",
     content: dummyContent1,
     email: "test@email.com",
-    title: "Facility Dummy Payment about [XXX]",
+    title: "Facility Dummy Payment",
     topic: EnquiryTopic.payment,
     read: false,
     property: {

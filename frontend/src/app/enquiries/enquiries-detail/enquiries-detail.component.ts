@@ -1,7 +1,12 @@
 import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlertController, LoadingController, ModalController, ToastController } from '@ionic/angular';
+import {
+  AlertController,
+  LoadingController,
+  ModalController,
+  ToastController,
+} from '@ionic/angular';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -32,29 +37,35 @@ export class EnquiriesDetailComponent implements OnInit, OnDestroy {
     private modalCtrl: ModalController,
     private route: ActivatedRoute,
     private loadingCtrl: LoadingController
-  ) { }
+  ) {}
 
   async ngOnInit() {
     const loading = await this.loadingCtrl.create({
       message: 'Fetching enquiry details...',
-      spinner: 'circular'
+      spinner: 'circular',
     });
     loading.present();
 
-    this.route.paramMap.pipe(takeUntil(this.unsubscribe$)).subscribe(async (params) => {
-      loading.present();
-      this.paramId = params.get('id');
-      await this.enquiriesService.fetchEnquiry(this.paramId);
-    });
+    this.route.paramMap
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe(async (params) => {
+        loading.present();
+        this.paramId = params.get('id');
+        await this.enquiriesService.fetchEnquiry(this.paramId);
+      });
 
-    this.enquiriesService.enquiry$.pipe(takeUntil(this.unsubscribe$)).subscribe(enquiry => {
-      if (enquiry) {
-        this.enquiry = enquiry;
-        loading.dismiss();
+    this.enquiriesService.enquiry$
+      .pipe(takeUntil(this.unsubscribe$))
+      .subscribe((enquiry) => {
+        if (enquiry) {
+          this.enquiry = enquiry;
+          loading.dismiss();
+        }
+      });
+    this.userService.user$.subscribe((user) => {
+      if (user) {
+        this.user = user;
       }
-    });
-    this.userService.user$.subscribe(user => {
-      if (user) { this.user = user; }
     });
   }
 
@@ -92,20 +103,21 @@ export class EnquiriesDetailComponent implements OnInit, OnDestroy {
       message: 'Are you sure you want to Report this Message?',
       buttons: [
         {
-          text: 'Cancel',
+          text: 'Huỷ',
           role: 'cancel',
           handler: () => {
             // console.log('Confirm Cancel: blah');
-          }
-        }, {
-          text: 'REPORT',
+          },
+        },
+        {
+          text: 'BÁO CÁO',
           cssClass: 'alert-danger-text',
           role: 'delete',
           handler: () => {
             this.presentToast('Enquiry will be place for investigation.');
-          }
-        }
-      ]
+          },
+        },
+      ],
     });
 
     await alert.present();
@@ -123,8 +135,9 @@ export class EnquiriesDetailComponent implements OnInit, OnDestroy {
           role: 'cancel',
           handler: () => {
             // console.log('Confirm Cancel: blah');
-          }
-        }, {
+          },
+        },
+        {
           text: 'DELETE',
           cssClass: 'alert-danger-text',
           role: 'delete',
@@ -132,9 +145,9 @@ export class EnquiriesDetailComponent implements OnInit, OnDestroy {
             this.enquiriesService.removeEnquiry(enqId);
             this.router.navigate(['/enquiries']);
             this.presentToast('Enquiry is deleted successfully.');
-          }
-        }
-      ]
+          },
+        },
+      ],
     });
 
     await alert.present();
@@ -145,7 +158,7 @@ export class EnquiriesDetailComponent implements OnInit, OnDestroy {
     const toast = await this.toastCtrl.create({
       message,
       duration,
-      color: 'success'
+      color: 'success',
     });
     toast.present();
   }
@@ -159,10 +172,10 @@ export class EnquiriesDetailComponent implements OnInit, OnDestroy {
         replyTo: {
           enquiry_id: this.enquiry.enquiry_id,
           title: this.enquiry.title,
-          topic: this.enquiry.topic
+          topic: this.enquiry.topic,
         },
-        userTo: this.enquiry.users?.from?.user_id
-      }
+        userTo: this.enquiry.users?.from?.user_id,
+      },
     });
     return await modal.present();
   }

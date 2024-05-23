@@ -5,7 +5,9 @@
         <ion-col size="12" sizeMd="4">
           <ion-card>
             <ion-card-header class="ion-no-padding">
-              <ion-card-title class="ion-padding"> Thông tin của tôi, </ion-card-title>
+              <ion-card-title class="ion-padding">
+                Thông tin của tôi</ion-card-title
+              >
               <div class="profile-img-container">
                 <img [src]="imgUrl" />
               </div>
@@ -27,16 +29,18 @@
                 Tải lên hình ảnh
               </ion-button>
 
-              <div class="app-use-info">
+              <!-- <div class="app-use-info">
                 <div class="item">
                   <ion-icon name="flame-outline"></ion-icon>
-                  <ion-text>Đã tham gia vào {{ user?.created | date }}</ion-text>
+                  <ion-text
+                    >Đã tham gia vào {{ user?.created | date }}</ion-text
+                  >
                 </div>
                 <div class="item">
                   <ion-icon name="calendar-outline"></ion-icon>
                   <ion-text>Visited For 1 day</ion-text>
                 </div>
-              </div>
+              </div> -->
             </ion-card-content>
           </ion-card>
         </ion-col>

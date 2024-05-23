@@ -40,7 +40,7 @@
                 multiple="true"
                 [(ngModel)]="filterBy"
                 okText="Confirm"
-                cancelText="Dismiss"
+                cancelText="Bỏ qua"
                 label=" Lọc theo loại :"
                 (ionChange)="propertyLists.setFilters(filterBy)"
               >
@@ -61,8 +61,8 @@
               <ion-select
                 [(ngModel)]="sortBy"
                 okText="Confirm"
-                cancelText="Dismiss"
-                label="Sort by:"
+                cancelText="Bỏ qua"
+                label="Sắp xếp theo:"
                 (ionChange)="propertyLists.setSort(sortBy)"
               >
                 <ion-select-option

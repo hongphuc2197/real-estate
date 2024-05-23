@@ -26,35 +26,35 @@ export class PropertiesPage implements OnInit, OnDestroy {
   public filters = [
     {
       value: PropertyType.residential,
-      label: 'Residential'
+      label: 'Residential',
     },
     {
       value: PropertyType.commercial,
-      label: 'Commercial'
+      label: 'Commercial',
     },
     {
       value: PropertyType.industrial,
-      label: 'Industrial'
+      label: 'Industrial',
     },
     {
       value: PropertyType.land,
-      label: 'Land'
+      label: 'Land',
     },
   ];
   public sortBy = 'latest';
   public sorts = [
     {
       value: 'latest',
-      label: 'Latest'
+      label: 'Mới nhất',
     },
     {
       value: 'name',
-      label: 'Name'
+      label: 'Tên',
     },
     {
       value: 'price',
-      label: 'Price'
-    }
+      label: 'Giá',
+    },
   ];
   public user: User;
   private unSubscribe$ = new Subject<void>();
@@ -63,34 +63,38 @@ export class PropertiesPage implements OnInit, OnDestroy {
     public modalController: ModalController,
     private userService: UserService,
     private router: Router,
-    private toastCtrl: ToastController,
-  ) { }
+    private toastCtrl: ToastController
+  ) {}
 
   async ngOnInit() {
-    this.userService.user$.pipe(takeUntil(this.unSubscribe$)).subscribe((val) => {
-      console.log('subscsriptoon')
-      this.user = val
-    })
+    this.userService.user$
+      .pipe(takeUntil(this.unSubscribe$))
+      .subscribe((val) => {
+        console.log('subscsriptoon');
+        this.user = val;
+      });
   }
 
   ngOnDestroy(): void {
-      this.unSubscribe$.next();
-      this.unSubscribe$.complete();
+    this.unSubscribe$.next();
+    this.unSubscribe$.complete();
   }
 
   async presentModal() {
     const user = this.userService.user;
     if (!user) {
       this.router.navigateByUrl('/user/signin');
-      this.toastCtrl.create({
-        message: 'Please sign in, to continue',
-        duration: 3000,
-        color: 'danger'
-      }).then(toast => toast.present());
+      this.toastCtrl
+        .create({
+          message: 'Hãy đăng nhập để tiếp tục',
+          duration: 3000,
+          color: 'danger',
+        })
+        .then((toast) => toast.present());
       return;
     }
     const modalPropertiesNew = await this.modalController.create({
-      component: PropertiesNewComponent
+      component: PropertiesNewComponent,
     });
     await modalPropertiesNew.present();
     const { data } = await modalPropertiesNew.onDidDismiss();
@@ -101,18 +105,18 @@ export class PropertiesPage implements OnInit, OnDestroy {
 
   public async presentLoading() {
     this.progressBar = true;
-    setTimeout(() => this.progressBar = false, 1500);
+    setTimeout(() => (this.progressBar = false), 1500);
   }
 
   public switchOwnedProperty(event: CustomEvent) {
-    this.ownedPropertiesOnly.set(event.detail.checked)
-    this.propertyListsComponent.setOwnedPropertiesOnly(event.detail.checked)
+    this.ownedPropertiesOnly.set(event.detail.checked);
+    this.propertyListsComponent.setOwnedPropertiesOnly(event.detail.checked);
   }
 
   private async presentUploadModal(property: Property) {
     const modalUploads = await this.modalController.create({
       component: PropertiesUploadsComponent,
-      componentProps: { property }
+      componentProps: { property },
     });
     await modalUploads.present();
   }

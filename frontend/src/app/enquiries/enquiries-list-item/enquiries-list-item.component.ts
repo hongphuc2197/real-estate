@@ -1,5 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AlertController, ModalController, PopoverController, ToastController } from '@ionic/angular';
+import {
+  AlertController,
+  ModalController,
+  PopoverController,
+  ToastController,
+} from '@ionic/angular';
 import { ActionPopupComponent } from 'src/app/shared/components/action-popup/action-popup.component';
 import { Enquiry } from 'src/app/shared/interface/enquiry';
 import { UserService } from 'src/app/user/user.service';
@@ -12,7 +17,6 @@ import { EnquiriesService } from '../enquiries.service';
   styleUrls: ['./enquiries-list-item.component.scss'],
 })
 export class EnquiriesListItemComponent implements OnInit {
-
   @Input() enquiry: Enquiry;
   public sent = false;
 
@@ -23,10 +27,11 @@ export class EnquiriesListItemComponent implements OnInit {
     private toastCtrl: ToastController,
     private modalCtrl: ModalController,
     public userService: UserService
-  ) { }
+  ) {}
 
   ngOnInit() {
-    this.sent = this.userService.user.user_id === this.enquiry.users.from.user_id;
+    this.sent =
+      this.userService.user.user_id === this.enquiry.users.from.user_id;
   }
 
   public async actionPopup(ev: Event, enqId: string) {
@@ -39,7 +44,7 @@ export class EnquiriesListItemComponent implements OnInit {
         report: !this.sent,
         message: !this.sent,
       },
-      translucent: true
+      translucent: true,
     });
     await popover.present();
 
@@ -56,7 +61,6 @@ export class EnquiriesListItemComponent implements OnInit {
     }
   }
 
-
   public async delete(enqId: string) {
     const alert = await this.alertCtrl.create({
       cssClass: 'my-custom-alert-class',
@@ -65,30 +69,35 @@ export class EnquiriesListItemComponent implements OnInit {
       message: 'Are you sure you want to delete this Enquiry?',
       buttons: [
         {
-          text: 'Cancel'
-        }, {
-          text: 'DELETE',
+          text: 'Huỷ',
+        },
+        {
+          text: 'Xoá',
           cssClass: 'alert-danger-text',
           handler: async () => {
             const res = await this.enquiriesService.removeEnquiry(enqId);
             if (!res || res.status !== 200) {
-              const msg = 'Error: Something went wrong, please try again later.';
+              const msg = 'Error: Đã có lỗi xảy ra. Hãy thử lại.';
               this.presentToast(`${res.message || msg}`, 3000, 'danger');
               return;
             }
             return this.presentToast(res.message);
-          }
-        }
-      ]
+          },
+        },
+      ],
     });
     await alert.present();
   }
 
-  public async presentToast(message: string, duration = 3000, color = 'success') {
+  public async presentToast(
+    message: string,
+    duration = 3000,
+    color = 'success'
+  ) {
     const toast = await this.toastCtrl.create({
       message,
       duration,
-      color
+      color,
     });
     toast.present();
   }
@@ -102,10 +111,10 @@ export class EnquiriesListItemComponent implements OnInit {
         replyTo: {
           enquiry_id: this.enquiry.enquiry_id,
           title: this.enquiry.title,
-          topic: this.enquiry.topic
+          topic: this.enquiry.topic,
         },
-        userTo: this.enquiry.users?.from?.user_id
-      }
+        userTo: this.enquiry.users?.from?.user_id,
+      },
     });
     return await modal.present();
   }

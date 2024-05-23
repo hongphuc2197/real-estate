@@ -7,11 +7,10 @@ import { EnquiryTopic } from '../../enums/enquiry';
   styleUrls: ['./enquiry-badge.component.scss'],
 })
 export class EnquiryBadgeComponent implements OnInit {
-
   @Input() topic = 'residential';
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   topicColor() {
     switch (this.topic) {
@@ -31,13 +30,13 @@ export class EnquiryBadgeComponent implements OnInit {
   topicLabel() {
     switch (this.topic) {
       case EnquiryTopic.info:
-        return 'Enquire Information';
+        return 'Về thông tin';
       case EnquiryTopic.sales:
-        return 'About Sales';
+        return 'Về mua bán';
       case EnquiryTopic.schedule:
-        return 'About Schedule';
+        return 'Về lịch hẹn';
       case EnquiryTopic.payment:
-        return 'About Payment';
+        return 'Về thanh toán';
       default:
         break;
     }
