@@ -55,7 +55,7 @@ export class PropertiesNewComponent implements OnInit {
       // Step 2
       price: [''],
       currency: [
-        'PHP',
+        'VND',
         [Validators.maxLength(3), Validators.pattern('^[a-zA-Z ]*$')],
       ],
       features: [''],

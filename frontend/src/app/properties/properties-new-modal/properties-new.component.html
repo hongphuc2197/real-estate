@@ -6,7 +6,7 @@
       </ion-button>
     </ion-buttons>
 
-    <ion-title>Add new property</ion-title>
+    <ion-title>Thêm một BĐS mới</ion-title>
 
     <ion-buttons slot="end">
       <ion-button (click)="dismissModal()">
@@ -23,24 +23,24 @@
       <ion-item lines="none">
         <ion-input
           type="text"
-          label="Name:"
+          label="Tên:"
           labelPlacement="floating"
           formControlName="name"
           fill="outline"
-          helperText="Enter property name"
-          errorText="Invalid Name"
+          helperText="Nhập tên Bất động sản"
+          errorText="Tên không hợp lệ"
         ></ion-input>
       </ion-item>
 
       <ion-item lines="none">
         <ion-input
           type="text"
-          label="Address:"
+          label="Địa chỉ:"
           labelPlacement="floating"
           formControlName="address"
           fill="outline"
-          helperText="Enter property physical address"
-          errorText="Invalid address, address is required"
+          helperText="Nhập địa chỉ"
+          errorText="Địa chỉ không hợp lệ, địa chỉ là bắt buộc"
         ></ion-input>
       </ion-item>
 
@@ -48,18 +48,18 @@
         <ion-textarea
           formControlName="description"
           labelPlacement="floating"
-          label="Description:"
+          label="Mô tả:"
           placeholder="..."
           fill="outline"
-          helperText="Enter property description"
-          errorText="Invalid description, too short"
+          helperText="Nhập mô tả"
+          errorText="Mô tả không hợp lệ, quá ngắn!"
         ></ion-textarea>
       </ion-item>
 
       <ion-list>
         <ion-radio-group formControlName="type">
           <ion-list-header>
-            <ion-label>Type</ion-label>
+            <ion-label>Loại</ion-label>
           </ion-list-header>
 
           <ion-item lines="none" *ngFor="let type of propertyTypes">
@@ -79,53 +79,53 @@
       <ion-item lines="none">
         <ion-input
           type="number"
-          label="Price:"
+          label="Giá:"
           labelPlacement="floating"
           formControlName="price"
           fill="outline"
-          helperText="Enter property price"
-          errorText="Invalid price"
+          helperText="Nhập giá của Bất động sản"
+          errorText="Giá không hợp lệ"
         ></ion-input>
       </ion-item>
 
       <ion-item lines="none">
         <ion-input
           type="text"
-          placeholder="USD, PHP, SGD"
+          placeholder="VND, USD, PHP, SGD"
           labelPlacement="floating"
-          label="Currency:"
+          label="Tiền tệ:"
           formControlName="currency"
           fill="outline"
-          helperText="Enter property currency"
-          errorText="Currency is not valid"
+          helperText="Nhập đơn vị tiền tệ của bạn"
+          errorText="Đơn vị tiền tệ không hợp lệ"
         ></ion-input>
       </ion-item>
 
       <ion-item lines="none">
         <ion-textarea
           formControlName="features"
-          label="Features:"
+          label="Đặc điểm:"
           labelPlacement="floating"
-          placeholder="bedroom, kitchen, ..."
+          placeholder="nhà trung tâm, đủ nội thất, ..."
           fill="outline"
-          helperText="For multiple features separate with comma( , )"
+          helperText="Mô tả đặc điểm, cách nhau bởi dấu phẩy (,)"
         ></ion-textarea>
       </ion-item>
 
       <div class="coord-heading">
-        <ion-text color="dark">Set Marker Position:</ion-text>
+        <ion-text color="dark">Định vị trên bản đồ:</ion-text>
         <ion-button size="small" color="primary" (click)="openMap()">
-          Open Map
+          Mở bản đồ
         </ion-button>
       </div>
       <div class="coord-input">
         <ion-item lines="none">
           <ion-input
             type="text"
-            label="Latitude:"
+            label="Vĩ độ:"
             labelPlacement="floating"
             formControlName="lat"
-            placeholder="Latitude"
+            placeholder="Vĩ độ"
             fill="outline"
           ></ion-input>
         </ion-item>
@@ -133,10 +133,10 @@
         <ion-item lines="none">
           <ion-input
             type="text"
-            label="Longitude:"
+            label="Kinh độ:"
             labelPlacement="floating"
             formControlName="lng"
-            placeholder="Longitude"
+            placeholder="Kinh độ"
             fill="outline"
           ></ion-input>
         </ion-item>
@@ -151,13 +151,13 @@
       color="success"
       [disabled]="isSubmit"
     >
-      {{ step === 2 ? "Submit" : "Next" }}
+      {{ step === 2 ? "Gửi" : "Tiếp" }}
     </ion-button>
   </form>
 </ion-content>
 
 <ion-footer translucent>
   <ion-toolbar>
-    <div class="ion-padding-horizontal">Step {{ step }} / 2</div>
+    <div class="ion-padding-horizontal">Bước {{ step }} / 2</div>
   </ion-toolbar>
 </ion-footer>

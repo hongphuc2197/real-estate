@@ -33,8 +33,8 @@ interface NavLinks {
 export class AppComponent implements OnInit {
   public appPages: NavLinks[] = [
     { title: 'Bản đồ', url: '/map', icon: 'map' },
-    { title: 'Danh sách', url: '/properties', icon: 'home' },
-    { title: 'Yêu cầu', url: '/enquiries', icon: 'reader' },
+    { title: 'Danh sách BĐS', url: '/properties', icon: 'home' },
+    { title: 'Danh sách yêu cầu', url: '/enquiries', icon: 'reader' },
     { title: 'Tính toán khoản vay', url: '/mortgage-calc', icon: 'calculator' },
     { title: 'Cài đặt', url: '/settings', icon: 'cog' },
   ];

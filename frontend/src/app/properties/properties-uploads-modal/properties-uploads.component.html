@@ -1,6 +1,6 @@
 <ion-header translucent>
   <ion-toolbar>
-    <ion-title>Property Uploads</ion-title>
+    <ion-title>Tải lên hình ảnh cho Bất động sản</ion-title>
 
     <ion-buttons slot="end">
       <ion-button (click)="dismissModal()">
@@ -20,7 +20,7 @@
       >
         <img [src]="preview" class="" alt="preview" />
         <div class="cover-hover">
-          <p>Click to remove!</p>
+          <p>Bấm để xoá!</p>
           <small>{{ selectedFiles[i].name }}</small>
         </div>
       </div>
@@ -36,7 +36,7 @@
             id="imageUpload"
             multiple
           />
-          <p>Drag your files here or click in this area.</p>
+          <p>Kéo file của bạn vào hoặc bấm vào đây.</p>
         </div>
       </div>
       <ion-button
@@ -46,7 +46,7 @@
         id="uploadBtn"
         (click)="upload()"
       >
-        Upload Image
+        Tải lên hình ảnh
       </ion-button>
     </section>
 

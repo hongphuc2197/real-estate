@@ -12,9 +12,11 @@ const isPropertyOwner = function (property, req, res) {
   const token = authBearerToken(req);
   const user_id = userIdToken(token);
   if (property.user_id !== user_id) {
-    return res.status(401).send({ message: "Error: you do not own the property." });
+    return res
+      .status(401)
+      .send({ message: "Error: you do not own the property." });
   }
-}
+};
 
 export const addImagesProperty = async function (req, res) {
   const property_id = req.params.id;
@@ -60,9 +62,7 @@ export const deleteImagesProperty = async function (req, res) {
 
     isPropertyOwner(property, req, res);
 
-    property.images = property.images.filter(
-      (img) => !images.includes(img)
-    );
+    property.images = property.images.filter((img) => !images.includes(img));
     property.save();
     unlinkImages(images);
     return res.send({ data: images });
@@ -83,7 +83,7 @@ export const unlinkImages = function (propertyImages = []) {
         console.log(err);
         return;
       }
-      console.log("Successfully deleted " + img);
+      console.log("Xoá thành công hình " + img);
     });
   });
 };
