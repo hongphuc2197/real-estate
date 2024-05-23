@@ -26,19 +26,19 @@ export class PropertiesPage implements OnInit, OnDestroy {
   public filters = [
     {
       value: PropertyType.residential,
-      label: 'Residential',
+      label: 'Dân cư',
     },
     {
       value: PropertyType.commercial,
-      label: 'Commercial',
+      label: 'Thương mại',
     },
     {
       value: PropertyType.industrial,
-      label: 'Industrial',
+      label: 'Nhà máy',
     },
     {
       value: PropertyType.land,
-      label: 'Land',
+      label: 'Đất',
     },
   ];
   public sortBy = 'latest';

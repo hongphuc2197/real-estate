@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+  UntypedFormBuilder,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { ModalController, ToastController } from '@ionic/angular';
 import { PropertyType } from 'src/app/shared/enums/property';
 import { Property } from 'src/app/shared/interface/property';
@@ -15,20 +19,21 @@ export class PropertiesEditComponent implements OnInit {
   public propertyForm: UntypedFormGroup;
   public propertyTypes = [
     {
-      label: 'residential',
-      value: PropertyType.residential
+      label: 'dân cư',
+      value: PropertyType.residential,
     },
     {
-      label: 'commercial',
-      value: PropertyType.commercial
+      label: 'thương mại',
+      value: PropertyType.commercial,
     },
     {
-      label: 'industrial',
-      value: PropertyType.industrial
-    }, {
-      label: 'land',
-      value: PropertyType.land
-    }
+      label: 'nhà máy',
+      value: PropertyType.industrial,
+    },
+    {
+      label: 'đất',
+      value: PropertyType.land,
+    },
   ];
   public property: Property;
 
@@ -44,7 +49,7 @@ export class PropertiesEditComponent implements OnInit {
       description: [''],
       type: [PropertyType.residential],
 
-      price: ['',],
+      price: [''],
       currency: ['', Validators.maxLength(3)],
       features: [''],
       lat: ['0', Validators.required],
@@ -53,26 +58,31 @@ export class PropertiesEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.propertiesService.property$.subscribe(property => {
+    this.propertiesService.property$.subscribe((property) => {
       this.property = property;
       if (property) {
         const {
-          name, address, description, type, price, currency, features, position
+          name,
+          address,
+          description,
+          type,
+          price,
+          currency,
+          features,
+          position,
         } = property;
 
-        this.propertyForm.patchValue(
-          {
-            name,
-            address,
-            description,
-            type,
-            price,
-            currency,
-            features: features ? features.join(', ').trim() : '',
-            lat: position.lat,
-            lng: position.lng
-          }
-        );
+        this.propertyForm.patchValue({
+          name,
+          address,
+          description,
+          type,
+          price,
+          currency,
+          features: features ? features.join(', ').trim() : '',
+          lat: position.lat,
+          lng: position.lng,
+        });
       }
     });
   }
@@ -103,9 +113,11 @@ export class PropertiesEditComponent implements OnInit {
       price,
       currency,
       updatedAt,
-      features: features.split(',').filter((item: string) => item.trim() !== ''),
+      features: features
+        .split(',')
+        .filter((item: string) => item.trim() !== ''),
       position: { lat, lng },
-      user_id: this.property.user_id
+      user_id: this.property.user_id,
     };
     const updatedProperty = { ...this.property, ...editedProperty };
     const res = await this.propertiesService.updateProperty(updatedProperty);
@@ -114,7 +126,7 @@ export class PropertiesEditComponent implements OnInit {
       const toast = await this.toastCtrl.create({
         message: res.message,
         duration: 3000,
-        color: 'success'
+        color: 'success',
       });
       await toast.present();
     }
@@ -127,7 +139,7 @@ export class PropertiesEditComponent implements OnInit {
 
   public async openMap() {
     const modal = await this.modalCtrl.create({
-      component: PropertiesCoordinatesComponent
+      component: PropertiesCoordinatesComponent,
     });
     await modal.present();
     const { data } = await modal.onDidDismiss();

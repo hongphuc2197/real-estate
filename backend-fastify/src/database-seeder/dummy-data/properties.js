@@ -108,7 +108,7 @@ export const properties = [
       lat: 10.755644835068505,
       lng: 106.67226057934062,
     },
-    price: 1000400,
+    price: 12500000000,
     features: [
       "fridge",
       "induction stove",

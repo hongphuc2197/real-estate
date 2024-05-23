@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, ToastController } from '@ionic/angular';
-import { Validators, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import {
+  Validators,
+  UntypedFormBuilder,
+  UntypedFormGroup,
+} from '@angular/forms';
 
 import { PropertyType } from 'src/app/shared/enums/property';
 import { PropertiesService } from '../properties.service';
@@ -15,20 +19,21 @@ export class PropertiesNewComponent implements OnInit {
   public propertyForm: UntypedFormGroup;
   public propertyTypes = [
     {
-      label: 'residential',
-      value: PropertyType.residential
+      label: 'dân cư',
+      value: PropertyType.residential,
     },
     {
-      label: 'commercial',
-      value: PropertyType.commercial
+      label: 'thương mại',
+      value: PropertyType.commercial,
     },
     {
-      label: 'industrial',
-      value: PropertyType.industrial
-    }, {
-      label: 'land',
-      value: PropertyType.land
-    }
+      label: 'nhà máy',
+      value: PropertyType.industrial,
+    },
+    {
+      label: 'đất',
+      value: PropertyType.land,
+    },
   ];
   public step = 1;
   public error = false;
@@ -38,7 +43,7 @@ export class PropertiesNewComponent implements OnInit {
     private modalCtrl: ModalController,
     private formBuilder: UntypedFormBuilder,
     private propertiesService: PropertiesService,
-    private toastCtrl: ToastController,
+    private toastCtrl: ToastController
   ) {
     this.propertyForm = this.formBuilder.group({
       id: 'test',
@@ -48,15 +53,18 @@ export class PropertiesNewComponent implements OnInit {
       description: ['', [Validators.required, Validators.minLength(10)]],
       type: [PropertyType.residential],
       // Step 2
-      price: ['',],
-      currency: ['PHP', [Validators.maxLength(3), Validators.pattern('^[a-zA-Z ]*$')]],
+      price: [''],
+      currency: [
+        'PHP',
+        [Validators.maxLength(3), Validators.pattern('^[a-zA-Z ]*$')],
+      ],
       features: [''],
       lat: ['0', Validators.required],
       lng: ['0', Validators.required],
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   public async submit() {
     if (this.step === 1 && this.validateStepOne()) {
@@ -68,11 +76,16 @@ export class PropertiesNewComponent implements OnInit {
       const ft = this.propertyForm.get('features').value;
 
       this.propertyForm.patchValue({
-        features: ft.split(',').filter((item: string) => item.trim() !== '')
+        features: ft.split(',').filter((item: string) => item.trim() !== ''),
       });
       const { lat, lng } = this.propertyForm.value;
-      const newProperty = { ...this.propertyForm.value, ...{ position: { lat, lng }, date: new Date() } };
-      const { data, message } = await this.propertiesService.addProperty(newProperty);
+      const newProperty = {
+        ...this.propertyForm.value,
+        ...{ position: { lat, lng }, date: new Date() },
+      };
+      const { data, message } = await this.propertiesService.addProperty(
+        newProperty
+      );
       if (data) {
         this.modalCtrl.dismiss(data);
         this.presentToast(message);
@@ -81,7 +94,10 @@ export class PropertiesNewComponent implements OnInit {
       this.presentToast('Error:' + message, 'danger');
       return;
     }
-    this.presentToast('Error: Invalid, please fill the form properly', 'danger');
+    this.presentToast(
+      'Error: Invalid, please fill the form properly',
+      'danger'
+    );
   }
 
   public dismissModal() {
@@ -90,7 +106,7 @@ export class PropertiesNewComponent implements OnInit {
 
   public async openMap() {
     const modal = await this.modalCtrl.create({
-      component: PropertiesCoordinatesComponent
+      component: PropertiesCoordinatesComponent,
     });
     await modal.present();
     const { data } = await modal.onDidDismiss();
@@ -124,11 +140,15 @@ export class PropertiesNewComponent implements OnInit {
     this.error = true;
   }
 
-  private async presentToast(message: string, color = 'success', duration = 3000) {
+  private async presentToast(
+    message: string,
+    color = 'success',
+    duration = 3000
+  ) {
     const toast = await this.toastCtrl.create({
       message,
       duration,
-      color
+      color,
     });
     toast.present();
   }

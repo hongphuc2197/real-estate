@@ -14,39 +14,45 @@ interface Markers {
   styleUrls: ['./map-markers-legend.component.scss'],
 })
 export class MapMarkersLegendComponent implements OnInit {
-  @Output() toggledMarker = new EventEmitter<{ type: string; isChecked: boolean }>();
+  @Output() toggledMarker = new EventEmitter<{
+    type: string;
+    isChecked: boolean;
+  }>();
 
   public markers: Markers[] = [
     {
-      label: 'Residential',
+      label: 'Dân cư',
       value: PropertyType.residential,
       isChecked: true,
-      icon: 'marker-residential.svg'
+      icon: 'marker-residential.svg',
     },
     {
-      label: 'Commercial',
+      label: 'Thương mại',
       value: PropertyType.commercial,
       isChecked: true,
       icon: 'marker-commercial.svg',
-
-    }, {
-      label: 'Industrial',
+    },
+    {
+      label: 'Nhà máy',
       value: PropertyType.industrial,
       isChecked: true,
-      icon: 'marker-industrial.svg'
-    }
-    , {
-      label: 'Land',
+      icon: 'marker-industrial.svg',
+    },
+    {
+      label: 'Đất',
       value: PropertyType.land,
       isChecked: true,
-      icon: 'marker-land.svg'
-    }
+      icon: 'marker-land.svg',
+    },
   ];
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   markerSelected(marker: Markers) {
-    this.toggledMarker.emit({ type: marker.value, isChecked: marker.isChecked });
+    this.toggledMarker.emit({
+      type: marker.value,
+      isChecked: marker.isChecked,
+    });
   }
 }
